@@ -1,0 +1,40 @@
+#! /bin/bash
+
+# A script to print software licenses
+
+PROG=$(basename -- "$0")
+
+function usage {
+	cat <<- _EOF_
+	Usage: ${PROG} <license>
+	Try '${PROG} --help' for more information
+	_EOF_
+}
+
+function help {
+	cat <<- _EOF_
+	${PROG}: A script to print software licenses.
+
+	Options:
+	  -h, --help    Print this help message.
+	
+	Licenses:
+	  mit           Print the MIT license
+	_EOF_
+}
+
+if [ $# -eq 0 ]; then
+	usage
+	exit 1
+fi
+
+while [ $# -gt 1 ]; do
+	case "$1" in
+		-h|--help)
+			help
+			exit 0
+	esac
+done
+
+echo "ds_license!"
+
